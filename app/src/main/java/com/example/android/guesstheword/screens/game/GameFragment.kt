@@ -80,13 +80,17 @@ class GameFragment : Fragment() {
             binding.timerText.text = DateUtils.formatElapsedTime(newTime)
         })
 
+        //view model contains UI data, so bind it directly to views
+        //to utilize data binding instead of onclick listeners
+        binding.gameViewModel = viewModel
+
         //process data from vm and update ui
-        binding.correctButton.setOnClickListener {
-            viewModel.onCorrect()
-        }
-        binding.skipButton.setOnClickListener {
-            viewModel.onSkip()
-        }
+//        binding.correctButton.setOnClickListener {
+//            viewModel.onCorrect()
+//        }
+//        binding.skipButton.setOnClickListener {
+//            viewModel.onSkip()
+//        }
 
         return binding.root
     }
