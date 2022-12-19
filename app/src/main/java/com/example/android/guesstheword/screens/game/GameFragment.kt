@@ -61,13 +61,13 @@ class GameFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
         // observe data in view model through observer object
-        viewModel.score.observe(viewLifecycleOwner, Observer { newScore->
-            binding.scoreText.text = newScore.toString()
-        })
-
-        viewModel.word.observe(viewLifecycleOwner, Observer{ newWord ->
-            binding.wordText.text = newWord
-        })
+//        viewModel.score.observe(viewLifecycleOwner, Observer { newScore->
+//            binding.scoreText.text = newScore.toString()
+//        })
+//
+//        viewModel.word.observe(viewLifecycleOwner, Observer{ newWord ->
+//            binding.wordText.text = newWord
+//        })
 
         viewModel.isGameFinished.observe(viewLifecycleOwner, Observer{ isGameFinished ->
             if(isGameFinished == true) {
@@ -83,6 +83,10 @@ class GameFragment : Fragment() {
         //view model contains UI data, so bind it directly to views
         //to utilize data binding instead of onclick listeners
         binding.gameViewModel = viewModel
+
+        //allows us to use live data in view model directly with views
+        //instead of using observer code in UI controller
+        binding.setLifecycleOwner(this)
 
         //process data from vm and update ui
 //        binding.correctButton.setOnClickListener {
