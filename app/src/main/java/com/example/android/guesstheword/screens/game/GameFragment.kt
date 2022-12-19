@@ -76,9 +76,10 @@ class GameFragment : Fragment() {
             }
         })
 
-        viewModel.currentTime.observe(viewLifecycleOwner, Observer{ newTime ->
-            binding.timerText.text = DateUtils.formatElapsedTime(newTime)
-        })
+        //formatting live data should be handled in view model
+//        viewModel.currentTime.observe(viewLifecycleOwner, Observer{ newTime ->
+//            binding.timerText.text = DateUtils.formatElapsedTime(newTime)
+//        })
 
         //view model contains UI data, so bind it directly to views
         //to utilize data binding instead of onclick listeners
